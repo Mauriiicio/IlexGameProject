@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
     public GameObject[] enemy;
+    public GameObject PointBonus;
     public Limit limit;
     public GameObject gameOvertxt;
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         gameManager = this;
         StartCoroutine(SpawnEnemys());
+        StartCoroutine(SpawnPoint());
     }
 
    
@@ -53,6 +55,21 @@ public class GameManager : MonoBehaviour
             if (enemyNumbers >= enemyLimit)
                 enemyNumbers = enemyLimit;
             yield return new WaitForSeconds(2f);
+        }
+    }
+    IEnumerator SpawnPoint()
+    {
+        yield return new WaitForSeconds(3f);
+        while (!GameOver)
+        {
+            for (int i = 0; i < enemyNumbers; i++)
+            {
+                Vector3 SpawnPointbonus = new Vector3(Random.Range(limit.xLimitMin, limit.xLimitMax), limit.yLimitMin, 0);
+                Instantiate(PointBonus, SpawnPointbonus, Quaternion.identity);
+                yield return new WaitForSeconds(Random.Range(3, 10));
+            }
+            enemyNumbers++;
+            yield return new WaitForSeconds(5f);
         }
     }
     //Contagem dos pontos

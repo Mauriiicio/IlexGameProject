@@ -28,8 +28,7 @@ public class Player : MonoBehaviour
     private float speed = 5;
     [SerializeField]
     private Limit limit;
-    [SerializeField]
-    private int shootPower = 1;
+    
     
 
     void Start()
@@ -67,20 +66,9 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.Space) && Time.time > nextShoot)
             {
                 nextShoot = Time.time + rateShoot;
-                if (shootPower >= 1)
-                {
-                    Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
-                }
-                if (shootPower >= 2)
-                {
-                    Instantiate(LaserGameObject, spawnsLaser[1].transform.position, spawnsLaser[1].transform.rotation);
-                    Instantiate(LaserGameObject, spawnsLaser[2].transform.position, spawnsLaser[2].transform.rotation);
-                }
-                if (shootPower >= 3)
-                {
-                    Instantiate(LaserGameObject, spawnsLaser[3].transform.position, spawnsLaser[3].transform.rotation);
-                    Instantiate(LaserGameObject, spawnsLaser[4].transform.position, spawnsLaser[4].transform.rotation);
-                }
+                Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
+                
+                
             }
         }
     }
