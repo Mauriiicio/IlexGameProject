@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
+    //Calculo do Dano e verificacao de colisao.
     [SerializeField]
     private int damage;
     private void OnTriggerEnter2D(Collider2D collision)

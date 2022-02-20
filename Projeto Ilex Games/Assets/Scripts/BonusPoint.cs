@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BonusPoint : MonoBehaviour
 {
+    //coletavel que da pontos ao jogador.
     [SerializeField]
-    private int points = 1000;
+    private int points;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Player player = collision.GetComponent<Player>();

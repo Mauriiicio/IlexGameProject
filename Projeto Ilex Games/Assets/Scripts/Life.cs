@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Life : MonoBehaviour
 {
-
+    public GameObject ExplosionAnimation;
 
     [SerializeField]
     private int health;
@@ -13,20 +13,8 @@ public class Life : MonoBehaviour
 
     private bool Dead = false;
     
-
-
-    public GameObject ExplosionAnimation;
     
-    void Start()
-    {
-        
-    }
-
-   
-    void Update()
-    {
-        
-    }
+    
     //Tirando vida e verificando a morte
     public void Damage(int damage)
     {

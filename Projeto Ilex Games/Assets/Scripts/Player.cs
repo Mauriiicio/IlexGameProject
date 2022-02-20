@@ -52,11 +52,13 @@ public class Player : MonoBehaviour
     //movimento do player e limite da tela.
     public void movementPlayer()
     {
-        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rgb2D.velocity = movement * speed;
+       
+            Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            rgb2D.velocity = movement * speed;
 
-        rgb2D.position = new Vector2(Mathf.Clamp(rgb2D.position.x, limit.xLimitMin, limit.xLimitMax), 
-                                     Mathf.Clamp(rgb2D.position.y, limit.yLimitMin, limit.yLimitMax));
+            rgb2D.position = new Vector2(Mathf.Clamp(rgb2D.position.x, limit.xLimitMin, limit.xLimitMax),
+                                         Mathf.Clamp(rgb2D.position.y, limit.yLimitMin, limit.yLimitMax));
+        
     }
     //tiro do player
     //ajustado o tempo do tiro
