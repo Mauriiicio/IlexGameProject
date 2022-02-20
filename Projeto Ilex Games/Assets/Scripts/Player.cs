@@ -70,8 +70,6 @@ public class Player : MonoBehaviour
             {
                 nextShoot = Time.time + rateShoot;
                 Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
-                
-                
             }
         }
     }

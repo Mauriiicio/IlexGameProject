@@ -10490,7 +10490,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   rateShoot: 0.3
-  sprite: {fileID: 1544830031}
+  spritePlayer: {fileID: 1544830031}
+  spriteFire: {fileID: 23795847}
   speed: 10
   limit:
     xLimitMin: -7
@@ -10576,9 +10577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347ee01a618824441a25957ca20f41d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExplosionAnimation: {fileID: 371892299691111966, guid: 99ee54343c372b94296b0acfcc1bb167, type: 3}
   health: 1
   points: 0
-  ExplosionAnimation: {fileID: 371892299691111966, guid: 99ee54343c372b94296b0acfcc1bb167, type: 3}
 --- !u!1 &1811724587
 GameObject:
   m_ObjectHideFlags: 0
