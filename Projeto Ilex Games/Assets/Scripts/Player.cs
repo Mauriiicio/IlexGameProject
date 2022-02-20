@@ -17,7 +17,11 @@ public class Player : MonoBehaviour
     public GameObject LaserGameObject;
     public GameObject[] spawnsLaser;
     public float rateShoot;
+    public SpriteRenderer sprite;
+    
 
+    private int life = 1;
+    private bool Dead = false;
     private float nextShoot;
     private Rigidbody2D rgb2D;
     [SerializeField]
@@ -31,9 +35,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         rgb2D = GetComponent<Rigidbody2D>();
+        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         shooting();
@@ -57,23 +62,44 @@ public class Player : MonoBehaviour
     //ajustado o tempo do tiro
     public void shooting()
     {
-        if (Input.GetKey(KeyCode.Space) && Time.time > nextShoot)
+        if (!Dead)
         {
-            nextShoot = Time.time + rateShoot;
-            if (shootPower >= 1)
+            if (Input.GetKey(KeyCode.Space) && Time.time > nextShoot)
             {
-                Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
-            }
-            if (shootPower >= 2)
-            {
-                Instantiate(LaserGameObject, spawnsLaser[1].transform.position, spawnsLaser[1].transform.rotation);
-                Instantiate(LaserGameObject, spawnsLaser[2].transform.position, spawnsLaser[2].transform.rotation);
-            }
-            if (shootPower >= 3)
-            {
-                Instantiate(LaserGameObject, spawnsLaser[3].transform.position, spawnsLaser[3].transform.rotation);
-                Instantiate(LaserGameObject, spawnsLaser[4].transform.position, spawnsLaser[4].transform.rotation);
+                nextShoot = Time.time + rateShoot;
+                if (shootPower >= 1)
+                {
+                    Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
+                }
+                if (shootPower >= 2)
+                {
+                    Instantiate(LaserGameObject, spawnsLaser[1].transform.position, spawnsLaser[1].transform.rotation);
+                    Instantiate(LaserGameObject, spawnsLaser[2].transform.position, spawnsLaser[2].transform.rotation);
+                }
+                if (shootPower >= 3)
+                {
+                    Instantiate(LaserGameObject, spawnsLaser[3].transform.position, spawnsLaser[3].transform.rotation);
+                    Instantiate(LaserGameObject, spawnsLaser[4].transform.position, spawnsLaser[4].transform.rotation);
+                }
             }
         }
     }
+    //verificação se esta vivo ou morto para fazer respawn
+    public void respawn()
+    {
+        life--;
+        if(life> 0)
+        {
+            return;
+        }
+        else
+        {
+            life = 0;
+            Dead = true;
+            sprite.enabled = false;
+            GameManager.gameManager.gameOver(); 
+        }
+
+    }
+      
 }
