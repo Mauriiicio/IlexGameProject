@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
+    //faz o movimento dos objetos em cena.
     [SerializeField]
     private float speed;
 

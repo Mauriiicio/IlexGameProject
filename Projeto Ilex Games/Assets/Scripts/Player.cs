@@ -88,18 +88,14 @@ public class Player : MonoBehaviour
     public void respawn()
     {
         life--;
-        if(life> 0)
-        {
-            return;
-        }
-        else
+        if(life <= 0)
         {
             life = 0;
             Dead = true;
             sprite.enabled = false;
-            GameManager.gameManager.gameOver(); 
+            GameManager.gameManager.gameOver();
         }
-
+        
     }
       
 }

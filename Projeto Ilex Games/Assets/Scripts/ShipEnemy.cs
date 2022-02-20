@@ -37,9 +37,11 @@ public class ShipEnemy : MonoBehaviour
     //Faz com que a nave inimiga mova-se aleatoriamente.
     IEnumerator movimenteDodge()
     {
+        //tempo de espera para o movimento
         yield return new WaitForSeconds(Random.Range(startMoviment.x, startMoviment.y));
         while (true)
         {
+            //pega um valor positivo ou negativo para indicar a direção em x.
             NextMark = Random.Range(1, ShipDodge) * -Mathf.Sign(transform.position.x);
             yield return new WaitForSeconds(Random.Range(DodgTime.x, DodgTime.y));
             NextMark = 0;

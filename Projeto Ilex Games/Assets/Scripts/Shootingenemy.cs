@@ -15,6 +15,7 @@ public class Shootingenemy : MonoBehaviour
         InvokeRepeating("shootingEnemy", rateShoot, rateShoot);
         
     }
+    //instancia tiro do inimigo.
     void shootingEnemy()
     {
         for (int i = 0; i < spawnLasers.Length; i++)
