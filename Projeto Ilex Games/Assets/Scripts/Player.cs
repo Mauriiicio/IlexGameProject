@@ -17,8 +17,9 @@ public class Player : MonoBehaviour
     public GameObject LaserGameObject;
     public GameObject[] spawnsLaser;
     public float rateShoot;
-    public SpriteRenderer sprite;
-    
+    public SpriteRenderer spritePlayer;
+    public SpriteRenderer spriteFire;
+
 
     private int life = 1;
     private bool Dead = false;
@@ -80,7 +81,8 @@ public class Player : MonoBehaviour
         {
             life = 0;
             Dead = true;
-            sprite.enabled = false;
+            spritePlayer.enabled = false;
+            spriteFire.enabled = false;
             GameManager.gameManager.gameOver();
         }
         
