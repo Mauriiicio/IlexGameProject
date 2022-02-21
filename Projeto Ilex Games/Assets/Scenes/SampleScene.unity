@@ -10578,6 +10578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExplosionAnimation: {fileID: 371892299691111966, guid: 99ee54343c372b94296b0acfcc1bb167, type: 3}
+  wreckage: {fileID: 565306712475247244, guid: 482245a509d2a5a4b99e098110bd2356, type: 3}
   health: 1
   points: 0
 --- !u!1 &1811724587
