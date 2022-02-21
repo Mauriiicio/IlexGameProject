@@ -84,9 +84,8 @@ public class Player : MonoBehaviour
             Dead = true;
             spritePlayer.enabled = false;
             spriteFire.enabled = false;
-           
-
             GameManager.gameManager.gameOver();
+            
         }
         
     }
