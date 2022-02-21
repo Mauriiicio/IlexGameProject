@@ -101,9 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347ee01a618824441a25957ca20f41d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExplosionAnimation: {fileID: 371892299691111966, guid: 99ee54343c372b94296b0acfcc1bb167, type: 3}
+  wreckage: {fileID: 2495597147988920015, guid: 0d0f112e097842b48bbc69d286dcc0a5, type: 3}
   health: 3
   points: 20
-  ExplosionAnimation: {fileID: 371892299691111966, guid: 99ee54343c372b94296b0acfcc1bb167, type: 3}
 --- !u!114 &1511866833780585658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Laser: {fileID: 2070694359976247521, guid: 75f506bc398f9c7458cf8e4d002f7978, type: 3}
-  rateShoot: 1
+  rateShoot: 3
   spawnLasers:
   - {fileID: 1511866835155371724}
   - {fileID: 1511866834109406364}
@@ -137,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54da30b0113f8b843996b624c4ddc263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedUFO: 1
+  speedUFO: 0.5
   SpeedRotation: 180
 --- !u!114 &-8792506940425965571
 MonoBehaviour:

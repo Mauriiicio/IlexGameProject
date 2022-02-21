@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public float rateShoot;
     public SpriteRenderer spritePlayer;
     public SpriteRenderer spriteFire;
+   
 
 
     private int life = 1;
@@ -83,6 +84,8 @@ public class Player : MonoBehaviour
             Dead = true;
             spritePlayer.enabled = false;
             spriteFire.enabled = false;
+           
+
             GameManager.gameManager.gameOver();
         }
         

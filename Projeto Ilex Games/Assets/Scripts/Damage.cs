@@ -14,6 +14,7 @@ public class Damage : MonoBehaviour
         {
             life.Damage(damage);
             Destroy(gameObject);
+
         }
     }
 }
