@@ -28,11 +28,11 @@ public class Life : MonoBehaviour
                 Instantiate(ExplosionAnimation, transform.position, transform.rotation);
                 Instantiate(wreckage, transform.position, transform.rotation);
                 
-                //verificação se é o player, o player nao deve ser destruido.
+                //verificaï¿½ï¿½o se ï¿½ o player, o player nao deve ser destruido.
                 //respawn do player
                 if (this.GetComponent<Player>() != null)
                 {
-                    GetComponent<Player>().respawn();
+                    GetComponent<Player>().Respawn();
                 }
                 else
                 {

@@ -31,11 +31,15 @@ public class GameManager : MonoBehaviour
     {
         if (GameOver)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Start"))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Select"))
+            {
+                Application.Quit();
+            }
     }
     //Instanciando os inimigos aleatorios
     //locais aleatorias e de maneira gradativa.

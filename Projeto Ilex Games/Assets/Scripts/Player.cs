@@ -42,16 +42,16 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        shooting();
+        Shooting();
     }
     private void FixedUpdate()
     {
-        movementPlayer();
+        MovementPlayer();
 
     }
 
-    //movimento do player e limite da tela.
-    public void movementPlayer()
+    
+    public void MovementPlayer()
     {
        
             Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -61,21 +61,20 @@ public class Player : MonoBehaviour
                                          Mathf.Clamp(rgb2D.position.y, limit.yLimitMin, limit.yLimitMax));
         
     }
-    //tiro do player
-    //ajustado o tempo do tiro
-    public void shooting()
+    
+    public void Shooting()
     {
         if (!Dead)
         {
-            if (Input.GetKey(KeyCode.Space) && Time.time > nextShoot)
+            if (Input.GetButton("Fire1") && Time.time > nextShoot)
             {
                 nextShoot = Time.time + rateShoot;
                 Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
             }
         }
     }
-    //verificação se esta vivo ou morto para fazer respawn
-    public void respawn()
+    
+    public void Respawn()
     {
         life--;
         if(life <= 0)
