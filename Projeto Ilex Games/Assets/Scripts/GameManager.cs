@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,36 +14,38 @@ public class GameManager : MonoBehaviour
     public GameObject gameOvertxt;
 
     [SerializeField]
-    private Text Points_txt;
+    private TextMeshProUGUI Points_txt;
 
     private int enemyLimit = 10;
     private bool GameOver = false;
     private int enemyNumbers = 1;
     private int points;
+    public TextMeshProUGUI playerNameText; 
+
     void Start()
     {
         gameManager = this;
+        string playerName = PlayerPrefs.GetString("PlayerName", "AAA"); 
+        playerNameText.text = "Player: " + playerName;
         StartCoroutine(SpawnEnemys());
         StartCoroutine(SpawnPoint());
     }
 
-   
     void Update()
     {
         if (GameOver)
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Start"))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene("Menu");
             }
         }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Select"))
-            {
-                Application.Quit();
-            }
+        {
+            Application.Quit();
+        }
     }
-    //Instanciando os inimigos aleatorios
-    //locais aleatorias e de maneira gradativa.
+
     IEnumerator SpawnEnemys()
     {
         yield return new WaitForSeconds(1f);
@@ -53,7 +56,7 @@ public class GameManager : MonoBehaviour
                 GameObject ActualEnemy = enemy[Random.Range(0, enemy.Length)];
                 Vector3 SpawnEnemy = new Vector3(Random.Range(limit.xLimitMin, limit.xLimitMax), limit.yLimitMin, 0);
                 Instantiate(ActualEnemy, SpawnEnemy, Quaternion.identity);
-                yield return new WaitForSeconds(Random.Range(1,4));
+                yield return new WaitForSeconds(Random.Range(1, 4));
             }
             enemyNumbers++;
             if (enemyNumbers >= enemyLimit)
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(2f);
         }
     }
+
     IEnumerator SpawnPoint()
     {
         yield return new WaitForSeconds(3f);
@@ -76,15 +80,20 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(5f);
         }
     }
-    //Contagem dos pontos
+
     public void Score(int score)
     {
         points += score;
         Points_txt.text = points.ToString();
     }
+
     public void gameOver()
     {
         GameOver = true;
         gameOvertxt.SetActive(true);
+
+        // Salva a pontuação do jogador ao terminar o jogo
+        string playerName = PlayerPrefs.GetString("PlayerName", "AAA");
+        HighScoreManager.SaveScore(playerName, points);
     }
 }

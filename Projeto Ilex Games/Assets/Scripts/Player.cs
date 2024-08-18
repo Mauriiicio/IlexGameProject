@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
     {
         if (!Dead)
         {
-            if (Input.GetButton("Fire1") && Time.time > nextShoot)
+            if (Input.GetButton("Fire1")  && Time.time > nextShoot)
             {
                 nextShoot = Time.time + rateShoot;
                 Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
