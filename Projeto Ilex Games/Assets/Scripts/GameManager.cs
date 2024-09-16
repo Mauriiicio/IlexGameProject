@@ -62,13 +62,13 @@ public class GameManager : MonoBehaviour
             enemyNumbers++;
             if (enemyNumbers >= enemyLimit)
                 enemyNumbers = enemyLimit;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
     }
 
     IEnumerator SpawnPoint()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         while (!GameOver)
         {
             for (int i = 0; i < enemyNumbers; i++)
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(Random.Range(3, 10));
             }
             enemyNumbers++;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
         }
     }
 
