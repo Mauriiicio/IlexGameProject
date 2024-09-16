@@ -163,7 +163,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.BatleShipSpaceWarMaxDeluxe.Projeto-Ilex-Games
+    Standalone: com.Nebula-Striker.Nebula-Striker
   buildNumber:
     Standalone: 0
     VisionOS: 0
