@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         playerNameText.text = "Player: " + playerName;
         StartCoroutine(SpawnEnemys());
         StartCoroutine(SpawnPoint());
+        Cursor.visible = false;
     }
 
     void Update()

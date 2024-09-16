@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rgb2D = GetComponent<Rigidbody2D>();
-        
+        Cursor.visible = false;
     }
 
     
