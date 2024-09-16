@@ -28,6 +28,7 @@ public class ManagerMenu : MonoBehaviour
         CalculateCharWidths();
 
         UpdateSelectorPosition();
+        Cursor.visible = false;
     }
 
     void Update()
