@@ -21,14 +21,16 @@ public class ManagerMenu : MonoBehaviour
 
     void Start()
     {
-        playerName = new char[] { 'A', 'A', 'A', 'A', 'A' };
-        UpdatePlayerNameText();
-        DisplayHighScores();
+        
+        string savedName = PlayerPrefs.GetString("PlayerName", "AAAAA");
+        playerName = savedName.ToCharArray(); 
 
-        CalculateCharWidths();
+        UpdatePlayerNameText(); 
+        DisplayHighScores(); 
 
-        UpdateSelectorPosition();
-        Cursor.visible = false;
+        CalculateCharWidths(); 
+        UpdateSelectorPosition(); 
+        Cursor.visible = false; 
     }
 
     void Update()
