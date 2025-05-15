@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         GameOver = true;
         gameOvertxt.SetActive(true);
 
-        // Salva a pontuação do jogador ao terminar o jogo
+        // Salva a pontuacao do jogador ao terminar o jogo
         string playerName = PlayerPrefs.GetString("PlayerName", "AAA");
         HighScoreManager.SaveScore(playerName, points);
     }
