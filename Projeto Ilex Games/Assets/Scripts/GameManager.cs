@@ -5,55 +5,48 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     public static GameManager gameManager;
     public GameObject[] enemy;
     public GameObject PointBonus;
     public Limit limit;
     public GameObject gameOvertxt;
+    public Player player1; // Reference to Player 1
+    public Player player2; // Reference to Player 2
 
     [SerializeField]
     private TextMeshProUGUI Points_txt;
 
     private int enemyLimit = 10;
-    private bool GameOver = false;
+    private bool gameOver = false;
     private int enemyNumbers = 1;
     private int points;
-    public TextMeshProUGUI playerNameText; 
+    public TextMeshProUGUI playerNameText;
 
-    void Start()
-    {
+    void Start() {
         gameManager = this;
-        string playerName = PlayerPrefs.GetString("PlayerName", "AAA"); 
+        string playerName = PlayerPrefs.GetString("PlayerName", "AAA");
         playerNameText.text = "Player: " + playerName;
         StartCoroutine(SpawnEnemys());
         StartCoroutine(SpawnPoint());
         Cursor.visible = false;
     }
 
-    void Update()
-    {
-        if (GameOver)
-        {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Start"))
-            {
-                SceneManager.LoadScene("Menu");
+    void Update() {
+        if (gameOver) {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Start")) {
+                SceneManager.LoadScene("SampleScene");
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Select"))
-        {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Select")) {
             Application.Quit();
         }
     }
 
-    IEnumerator SpawnEnemys()
-    {
+    IEnumerator SpawnEnemys() {
         yield return new WaitForSeconds(1f);
-        while (!GameOver)
-        {
-            for (int i = 0; i < enemyNumbers; i++)
-            {
+        while (!gameOver) {
+            for (int i = 0; i < enemyNumbers; i++) {
                 GameObject ActualEnemy = enemy[Random.Range(0, enemy.Length)];
                 Vector3 SpawnEnemy = new Vector3(Random.Range(limit.xLimitMin, limit.xLimitMax), limit.yLimitMin, 0);
                 Instantiate(ActualEnemy, SpawnEnemy, Quaternion.identity);
@@ -66,13 +59,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnPoint()
-    {
+    IEnumerator SpawnPoint() {
         yield return new WaitForSeconds(1f);
-        while (!GameOver)
-        {
-            for (int i = 0; i < enemyNumbers; i++)
-            {
+        while (!gameOver) {
+            for (int i = 0; i < enemyNumbers; i++) {
                 Vector3 SpawnPointbonus = new Vector3(Random.Range(limit.xLimitMin, limit.xLimitMax), limit.yLimitMin, 0);
                 Instantiate(PointBonus, SpawnPointbonus, Quaternion.identity);
                 yield return new WaitForSeconds(Random.Range(3, 10));
@@ -82,19 +72,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Score(int score)
-    {
+    public void Score(int score) {
         points += score;
         Points_txt.text = points.ToString();
+
+        
+        if (player1.IsDead() && !player2.IsDead()) {
+            player1.Revive();
+        } else if (player2.IsDead() && !player1.IsDead()) {
+            player2.Revive();
+        }
     }
 
-    public void gameOver()
-    {
-        GameOver = true;
-        gameOvertxt.SetActive(true);
+    public void CheckGameOver() {
+        if (player1.IsDead() && player2.IsDead()) {
+            gameOver = true;
+            gameOvertxt.SetActive(true);
 
-        // Salva a pontuacao do jogador ao terminar o jogo
-        string playerName = PlayerPrefs.GetString("PlayerName", "AAA");
-        HighScoreManager.SaveScore(playerName, points);
+            // Save the player's score
+            string playerName = PlayerPrefs.GetString("PlayerName", "AAA");
+            HighScoreManager.SaveScore(playerName, points);
+        }
     }
 }

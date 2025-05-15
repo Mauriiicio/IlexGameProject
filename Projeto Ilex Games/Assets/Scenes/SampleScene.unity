@@ -11402,6 +11402,8 @@ MonoBehaviour:
     yLimitMin: 5
     yLimitMax: 0
   gameOvertxt: {fileID: 990574265}
+  player1: {fileID: 1544830030}
+  player2: {fileID: 1644275097}
   Points_txt: {fileID: 1403672628}
   playerNameText: {fileID: 81975281}
 --- !u!4 &2052810511

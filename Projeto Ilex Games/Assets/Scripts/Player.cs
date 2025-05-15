@@ -19,9 +19,8 @@ public class Player : MonoBehaviour {
     public SpriteRenderer spriteFire;
     public int playerID;
 
-
     private int life = 1;
-    private bool Dead = false;
+    private bool dead = false;
     private float nextShoot;
     private Rigidbody2D rgb2D;
     [SerializeField]
@@ -29,22 +28,22 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private Limit limit;
 
-
-
     void Start() {
         rgb2D = GetComponent<Rigidbody2D>();
         Cursor.visible = false;
     }
 
-
     void Update() {
-        Shooting();
+        if (!dead) {
+            Shooting();
+        }
     }
+
     private void FixedUpdate() {
-        MovementPlayer();
-
+        if (!dead) {
+            MovementPlayer();
+        }
     }
-
 
     public void MovementPlayer() {
         if (playerID == 1) {
@@ -64,20 +63,18 @@ public class Player : MonoBehaviour {
     }
 
     public void Shooting() {
-        if (!Dead) {
-            if (playerID == 1) {
-                if (Input.GetKey("joystick 3 button 0") && Time.time > nextShoot) {
-                    nextShoot = Time.time + rateShoot;
-                    Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
-                    Debug.Log("Joystick 1");
-                }
+        if (playerID == 1) {
+            if (Input.GetKey("joystick 3 button 0") && Time.time > nextShoot) {
+                nextShoot = Time.time + rateShoot;
+                Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
+                Debug.Log("Joystick 1");
             }
-            if (playerID == 2) {
-                if (Input.GetKey("joystick 2 button 0") && Time.time > nextShoot) {
-                    nextShoot = Time.time + rateShoot;
-                    Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
-                    Debug.Log("Joystick 2");
-                }
+        }
+        if (playerID == 2) {
+            if (Input.GetKey("joystick 2 button 0") && Time.time > nextShoot) {
+                nextShoot = Time.time + rateShoot;
+                Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
+                Debug.Log("Joystick 2");
             }
         }
     }
@@ -86,13 +83,24 @@ public class Player : MonoBehaviour {
         life--;
         if (life <= 0) {
             life = 0;
-            Dead = true;
+            dead = true;
             spritePlayer.enabled = false;
             spriteFire.enabled = false;
-            GameManager.gameManager.gameOver();
-
+            rgb2D.velocity = Vector2.zero; // Stop movement
+            GameManager.gameManager.CheckGameOver(); // Notify GameManager to check if both players are dead
         }
-
     }
 
+    public void Revive() {
+        life = 1;
+        dead = false;
+        spritePlayer.enabled = true;
+        spriteFire.enabled = true;
+        // Optionally reset position to a safe spawn point
+        rgb2D.position = new Vector2(0, limit.yLimitMin); // Adjust as needed
+    }
+
+    public bool IsDead() {
+        return dead;
+    }
 }
