@@ -42,7 +42,7 @@ public class ManagerMenu : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        // Verifica se o tempo decorrido desde a última mudança é maior que o intervalo definido
+        // Verifica se o tempo decorrido desde a ultima mudanda e maior que o intervalo definido
         if (Time.time - lastChangeTime >= changeRate)
         {
             if (verticalInput > 0)
@@ -69,11 +69,11 @@ public class ManagerMenu : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Start"))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("R1"))
         {
             StartGame();
         }
-        else if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Select"))
+        else if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("R2"))
         {
             Application.Quit();
         }
@@ -102,7 +102,7 @@ public class ManagerMenu : MonoBehaviour
         playerNameText.text = new string(playerName);
     }
 
-    // Atualiza a posição do seletor com base na largura dos caracteres
+    // Atualiza a posiï¿½ï¿½o do seletor com base na largura dos caracteres
     void UpdateSelectorPosition()
     {
         float selectorXPosition = 0f;

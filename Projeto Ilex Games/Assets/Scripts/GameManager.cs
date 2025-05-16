@@ -34,11 +34,11 @@ public class GameManager : MonoBehaviour {
 
     void Update() {
         if (gameOver) {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Start")) {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("R1")) {
                 SceneManager.LoadScene("SampleScene");
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Select")) {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("R2")) {
             Application.Quit();
         }
     }
