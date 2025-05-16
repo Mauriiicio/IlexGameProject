@@ -69,11 +69,11 @@ public class ManagerMenu : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("R1"))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("joystick 1 button 9"))
         {
             StartGame();
         }
-        else if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("R2"))
+        else if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("joystick 2 button 9"))
         {
             Application.Quit();
         }

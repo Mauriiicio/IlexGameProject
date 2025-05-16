@@ -70,7 +70,7 @@ InputManager:
     axis: 1
     joyNum: 3
   - serializedVersion: 3
-    m_Name: R1
+    m_Name: joystick 1 button 9
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -86,7 +86,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: R2
+    m_Name: joystick 2 button 9
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
