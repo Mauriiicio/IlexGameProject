@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class BonusPoint : MonoBehaviour {
-    //coletavel que da pontos ao jogador.
     [SerializeField]
     private int points;
     private void OnTriggerEnter2D(Collider2D collision) {
