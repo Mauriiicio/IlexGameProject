@@ -77,11 +77,6 @@ public class GameManager : MonoBehaviour {
         Points_txt.text = points.ToString();
 
         
-        if (player1.IsDead() && !player2.IsDead()) {
-            player1.Revive();
-        } else if (player2.IsDead() && !player1.IsDead()) {
-            player2.Revive();
-        }
     }
 
     public void CheckGameOver() {

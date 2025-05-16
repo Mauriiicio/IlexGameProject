@@ -64,7 +64,7 @@ public class Player : MonoBehaviour {
 
     public void Shooting() {
         if (playerID == 1) {
-            if (Input.GetKey("joystick 3 button 0") && Time.time > nextShoot) {
+            if (Input.GetKey("joystick 1 button 0") && Time.time > nextShoot) {
                 nextShoot = Time.time + rateShoot;
                 Instantiate(LaserGameObject, spawnsLaser[0].transform.position, spawnsLaser[0].transform.rotation);
                 Debug.Log("Joystick 1");

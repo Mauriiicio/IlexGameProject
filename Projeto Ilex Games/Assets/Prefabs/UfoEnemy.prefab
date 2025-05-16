@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExplosionAnimation: {fileID: 371892299691111966, guid: 99ee54343c372b94296b0acfcc1bb167, type: 3}
   wreckage: {fileID: 2495597147988920015, guid: 0d0f112e097842b48bbc69d286dcc0a5, type: 3}
-  health: 1
+  health: 3
   points: 20
 --- !u!114 &1511866833780585658
 MonoBehaviour:
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af84ecf7032121042a6b9a9ee16fc6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 3
 --- !u!50 &1511866833780585662
 Rigidbody2D:
   serializedVersion: 4
