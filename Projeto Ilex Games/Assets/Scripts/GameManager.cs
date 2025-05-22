@@ -34,11 +34,11 @@ public class GameManager : MonoBehaviour {
 
     void Update() {
         if (gameOver) {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("R1")) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
                 SceneManager.LoadScene("SampleScene");
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("R2")) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             Application.Quit();
         }
     }
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour {
         points += score;
         Points_txt.text = points.ToString();
 
-        
+
     }
 
     public void CheckGameOver() {
